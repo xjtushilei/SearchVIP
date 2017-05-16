@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>星驰全程会员查询系统</title>
+    <script src="js/config.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.js"></script>
+
+
+    <link href="http://cdn.bootcss.com/bootstrap-fileinput/4.3.5/css/fileinput.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/fileinput.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/locales/zh.js"></script>
+    <script type="text/javascript" src="login/myjs/login.js"></script>
+    <script type="text/javascript">
+        if (getCookie('userinfo') == '') window.location.href = 'login/index.html';
+
+    </script>
+</head>
+<body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="color:#ff9900;font-size: 25px">温馨提示</h4>
+            </div>
+            <div class="modal-body" id="tishi" style="font-size: 20px"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="img/logo.png" class="img-responsive" alt="星驰全程Logo">
+        </div>
+
+        <div class="col-sm-8">
+            <p style="font-size: 3.5em;margin-top: 2.4em">会员查询系统-管理平台</p>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div>
+                <label class="control-label">请上传Excel文件</label>
+                <input id="input" name="excel" type="file" multiple class="file-loading">
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <div class="row" style="margin-bottom: 20px">
+                <h2 style="margin-bottom: 20px">当前“会员专享”按钮的链接是： </h2>
+                <a class="alert alert-success" id="lianjie1" target="_blank" href=""></a>
+            </div>
+            <div class="row">
+                <div class="">
+                    <input type="text" class="form-control" id="url1" placeholder="请输入一个完整的链接（http://开头）">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px">
+                <h2 style="margin-bottom: 20px">当前“积分兑换明细”按钮的链接是： </h2>
+                <a class="alert alert-success" id="lianjie2" target="_blank" href=""></a>
+            </div>
+            <div class="row">
+                <div class="">
+                    <input type="text" class="form-control" id="url2" placeholder="请输入一个完整的链接（http://开头）" width="100%">
+                </div>
+                <button class="btn btn-danger" type="button" onclick="seturl()" style="margin-top: 30px"> &nbsp;设置链接&nbsp;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $.ajax({
+        url: ip + '/adminAPI/get',
+        type: 'get',
+        dataType: 'json',
+        data: {temp: new Date()},
+    })
+        .done(function (data) {
+            console.log("success");
+            console.log(data)
+            $("#lianjie1").text(data.lianjie1)
+            $("#lianjie2").text(data.lianjie2)
+            $("#lianjie1").attr('href', data.lianjie1);
+            $("#lianjie2").attr('href', data.lianjie2);
+            $("#url1").val(data.lianjie1)
+            $("#url2").val(data.lianjie2)
+        })
+        .fail(function (data) {
+            alert("出错！请重试！或者联系管理员！")
+        })
+
+
+    function seturl() {
+        $.ajax({
+            url: ip + '/adminAPI/set',
+            type: 'get',
+            dataType: 'text',
+            data: {url1: $("#url1").val(), url2: $("#url2").val(), temp: new Date()},
+        })
+            .done(function (data) {
+                console.log("success");
+                $("#tishi").text(data);
+                $('#myModal').modal('toggle')
+                $("#lianjie1").text($("#url1").val())
+                $("#lianjie2").text($("#url2").val())
+                $("#lianjie1").attr('href', $("#url1").val());
+                $("#lianjie2").attr('href', $("#url2").val());
+
+            })
+            .fail(function () {
+                $("#tishi").text("设置过程出现了网络问题！请您重试！");
+                $('#myModal').modal('toggle')
+                console.log("error");
+            })
+    }
+
+    $("#input").fileinput({
+        uploadUrl: ip + '/adminAPI/submitExcel/post', // you must set a valid URL here else you will get an error
+        language: 'zh',
+        showCaption: false,
+        // showUpload: false,
+        allowedFileExtensions: ["xls"]
+    });
+    $('#input').on('fileuploaded', function (event, data, previewId, index) {
+        response = data.response
+        $("#tishi").html("设置成功！<br>一共上传记录" + '<span style="color:red">' + response.successNum + '</span>' + "条");
+        $('#myModal').modal('toggle')
+        // alert(response.key1)
+        console.log('File batch upload success');
+    });
+
+</script>
+</body>
+</html>
