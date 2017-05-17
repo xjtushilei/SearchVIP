@@ -1,1 +1,1 @@
-var ip = "";
+var ip = "/xingchi";
