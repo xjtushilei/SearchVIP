@@ -1,6 +1,5 @@
 package xjtushilei.com.web;
 
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,6 @@ public class LoginController {
     private UserRepository userRepository;
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
-    @ApiOperation(value = "登录", notes = "登录")
     public String login1(String name, String passwd) {
         User user = userRepository.findByNameAndPasswd(name, passwd);
         if (user != null) {

@@ -1,6 +1,5 @@
 package xjtushilei.com.web;
 
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,6 @@ public class SearchController {
     private VipcardRepository vipcardRepository;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    @ApiOperation(value = "登录", notes = "登录")
     public ResponseEntity get(String vipID) {
         try {
             Vipcard vipcard;
