@@ -13,4 +13,4 @@
     1. application.properties  选择激活哪一个配置文件
     1. application-dev.properties 开发板配置文件
     1. application-prod.properties 生产版配置文件
-- `src\main\resources\static\js\config.js ` 配置前台ajax所有url请求的前缀，若是有域名的，ip=''。没有域名的，请加相关的路径。比如我们之前用的是"http://html.xjtushilei.com/xingchi/",属于没有域名的，所以在配置时候需要提供'xingchi'这样的前缀
+- `src\main\resources\static\js\config.js `  配置前台ajax所有url请求的前缀，若是有域名的 ，ip=''。没有域名的，请加相关的路径。比如我们之前用的是"  http://html.xjtushilei.com/xingchi/ " ,属于没有域名的，所以在配置时候需要提供'xingchi'这样的前缀
