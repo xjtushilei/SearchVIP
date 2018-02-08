@@ -84,7 +84,7 @@ function search() {
         success: function (data) {
             console.log(JSON.stringify(data))
             setCookie("info", JSON.stringify(data), 'd200')
-            $("#ing").css('display', 'node');
+            $("#ing").css('display', 'none');
             window.location = 'info.html'
         },
         error: function (data) {
