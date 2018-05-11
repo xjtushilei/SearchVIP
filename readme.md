@@ -23,9 +23,9 @@ gradlew build
 ### 部署
 在 build/libs 目录下
 
-java -jar xingchiquancheng.jar
+java -jar xingchi.jar
 
 后台部署
 
-nohup java -jar xingchiquancheng.jar &
+nohup java -jar xingchi.jar &
 
