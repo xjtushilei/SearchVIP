@@ -9,11 +9,10 @@
 ## 关键文件
 
 - `src\main\resources\application.properties` 配置了数据库信息
-    1. application.properties  选择激活哪一个配置文件
+    1. application.properties  选择激活哪一个配置文件 ,同时配置了启动端口，默认8081
     1. application-dev.properties 开发板配置文件
     1. application-prod.properties 生产版配置文件
     1. application-docker.properties 生产版部署在docker里的配置文件
-- `src\main\resources\static\js\config.js `  配置前台ajax所有url请求的前缀，若是有域名的 ，ip=''。没有域名的，请加相关的路径。比如我们之前用的是"  http://xxxxxxx.com/xingchi/ " ,属于没有域名的，所以在配置时候需要提供'xingchi'这样的前缀
 
 
 ## 启动和部署

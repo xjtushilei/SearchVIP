@@ -34,11 +34,16 @@ public class StartOfCreateMysqlTable implements CommandLineRunner {
             logger.info("用户数据库中没有数据，开始插入默认用户密码");
             userRepository.save(new User("jcxcqc", "xcqcscb"));
             userRepository.save(new User("admin", "shilei"));
+        }else {
+            logger.info("存在默认用户密码");
         }
         if (urlRepository.findAll().size() == 0) {
             logger.info("两个链接是空的，开始填写默认链接");
             urlRepository.save(new Url("lianjie1", "http://mp.weixin.qq.com/s/wngZepcjZRj-i7t3hEkbfQ"));
             urlRepository.save(new Url("lianjie2", "https://h5.koudaitong.com/v2/feature/cs5udv0g"));
+        }
+        else {
+            logger.info("存在默认两个链接");
         }
     }
 
