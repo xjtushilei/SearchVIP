@@ -13,4 +13,3 @@ fi
 
 
 # 在crontab中添加  */3 * * * * sh /home/ubuntu/crontab/check_xingchi.sh >> /home/ubuntu/crontab/logs/check_xingchi.log &
-

@@ -12,20 +12,21 @@
     1. application.properties  选择激活哪一个配置文件
     1. application-dev.properties 开发板配置文件
     1. application-prod.properties 生产版配置文件
+    1. application-docker.properties 生产版部署在docker里的配置文件
 - `src\main\resources\static\js\config.js `  配置前台ajax所有url请求的前缀，若是有域名的 ，ip=''。没有域名的，请加相关的路径。比如我们之前用的是"  http://xxxxxxx.com/xingchi/ " ,属于没有域名的，所以在配置时候需要提供'xingchi'这样的前缀
 
 
 ## 启动和部署
 
 ### 编译
-mvn package
+gradlew build
 
 ### 部署
-在target目录下
+在 build/libs 目录下
 
-java -jar xingchi.jar
+java -jar xingchiquancheng.jar
 
 后台部署
 
-nohup java -jar xingchi.jar &
+nohup java -jar xingchiquancheng.jar &
 
