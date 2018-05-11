@@ -1,3 +1,4 @@
+# 运行之前先：./gradlew build
 FROM openjdk:8-jdk-alpine
 RUN mkdir -p /root/workspace/project
 COPY build/libs/xingchi.jar /root/workspace/project
