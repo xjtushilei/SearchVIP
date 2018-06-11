@@ -17,10 +17,9 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'xjtushilei.com'
 sourceCompatibility = 1.8
-jar {
-    baseName "xingchi"
-    version ""
-}
+archivesBaseName="xingchi"
+
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
