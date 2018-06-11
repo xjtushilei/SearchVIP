@@ -28,7 +28,7 @@ public class LoginController {
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
     public String login1(String name, String passwd) {
-        logRepository.save(new Log("login", name + "---" + passwd));
+        logRepository.save(new Log("login", name));
         User user = userRepository.findByNameAndPasswd(name, passwd);
         if (user != null) {
             return "登录成功";

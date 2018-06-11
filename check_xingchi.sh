@@ -8,7 +8,7 @@ then
     nowtime=`date +"%Y-%m-%d %H:%M:%S"`
     echo $nowtime"xingchi.jar  can not find"
     cd /home/ubuntu/project/SearchVIP/build/libs/
-    nohup java -jar xingchi.jar &
+    nohup java -jar xingchi.jar -Xmx200m &
 fi
 
 
