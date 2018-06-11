@@ -15,7 +15,7 @@
 ## 启动和部署
 
 ### 编译
-gradlew build
+执行 gradlew build
 
 ### 部署
 在 build/libs 目录下
