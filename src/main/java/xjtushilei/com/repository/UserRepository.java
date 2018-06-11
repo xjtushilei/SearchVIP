@@ -1,7 +1,7 @@
 package xjtushilei.com.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xjtushilei.com.domain.User;
+import xjtushilei.com.entity.User;
 
 /**
  * Created by shilei on 2017/3/13.

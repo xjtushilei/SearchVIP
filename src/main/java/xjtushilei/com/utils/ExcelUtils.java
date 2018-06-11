@@ -3,7 +3,7 @@ package xjtushilei.com.utils;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import xjtushilei.com.domain.Vipcard;
+import xjtushilei.com.entity.Vipcard;
 
 import java.io.IOException;
 import java.io.InputStream;

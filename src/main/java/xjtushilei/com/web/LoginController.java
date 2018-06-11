@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import xjtushilei.com.domain.User;
+import xjtushilei.com.entity.Log;
+import xjtushilei.com.entity.User;
+import xjtushilei.com.repository.LogRepository;
 import xjtushilei.com.repository.UserRepository;
 
 /**
@@ -21,8 +23,12 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private LogRepository logRepository;
+
     @RequestMapping(value = "/post", method = RequestMethod.POST)
     public String login1(String name, String passwd) {
+        logRepository.save(new Log("login", name + "---" + passwd));
         User user = userRepository.findByNameAndPasswd(name, passwd);
         if (user != null) {
             return "登录成功";

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import xjtushilei.com.domain.Url;
-import xjtushilei.com.domain.User;
+import xjtushilei.com.entity.Url;
+import xjtushilei.com.entity.User;
 import xjtushilei.com.repository.UrlRepository;
 import xjtushilei.com.repository.UserRepository;
 

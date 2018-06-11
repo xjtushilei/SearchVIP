@@ -1,4 +1,4 @@
-package xjtushilei.com.domain;
+package xjtushilei.com.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

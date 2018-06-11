@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    password: sa
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/.xingchi/h2
+    username: sasasasa
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      path: "/h2"
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: "20Mb"
+      max-request-size: "50Mb"
